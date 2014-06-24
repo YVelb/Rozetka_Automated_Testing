@@ -1,6 +1,5 @@
 package ua.com.rozetka.order.runners;
 
-
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -13,7 +12,6 @@ import ua.com.rozetka.order.pages.AddToCart;
 import ua.com.rozetka.order.pages.AssertTheDeliveryCost;
 import ua.com.rozetka.order.pages.FindGoods;
 import ua.com.rozetka.order.pages.LoginPage;
-
 
 public class RozetkaDelivery_Steps extends BasicWebDriver {
 
