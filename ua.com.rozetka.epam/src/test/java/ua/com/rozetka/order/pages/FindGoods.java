@@ -13,7 +13,7 @@ public class FindGoods extends Page {
     @FindBy(xpath = "//div[@id='cart-popup']/div/div/div/div[2]/div/div/a/img")
     private WebElement DeleteFromCart;
 
-    @FindBy(xpath = "//div[@id='cart-popup']/div/a/img")
+    @FindBy(xpath = "//img[@alt='×']")
     private WebElement CloseCart;
 
     @FindBy(xpath = "//td[@id='tv-photo-video']/div/a")

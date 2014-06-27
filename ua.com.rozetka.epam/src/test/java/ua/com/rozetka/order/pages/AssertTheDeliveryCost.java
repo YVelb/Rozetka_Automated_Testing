@@ -10,11 +10,11 @@ public class AssertTheDeliveryCost extends Page {
     WebDriver driver;
 
 
-    @FindBy(id = "suggest_locality")
-    private WebElement EneterCity;
+//    @FindBy(id = "suggest_locality")
+//    private WebElement EneterCity;
 
-    @FindBy(xpath = "//section[@id='step_contacts']/div/div/div/div[2]/div[2]/div/div/div/ul/li")
-    private WebElement CityName;
+//    @FindBy(xpath = "//section[@id='step_contacts']/div/div/div/div[2]/div[2]/div/div/div/ul/li")
+//    private WebElement CityName;
 
     @FindBy(id = "reciever_phone")
     private WebElement EnterPhone;
@@ -25,11 +25,17 @@ public class AssertTheDeliveryCost extends Page {
     @FindBy(xpath = "//div[@id='orders']/div/div/div[2]/div/div[2]/ul/li[2]/a")
     private WebElement Courier;
 
+    @FindBy(xpath = "//div[@id='orders']/div/div/div[2]/div/div[2]/div/ul/li[2]/div/label/input")
+    private WebElement NovaPoshta;
+
     @FindBy(xpath = "//div[@id='delivery_address']/div")
     private WebElement AssertDeliveryCostIsLoaded;
 
     @FindBy(xpath = "//div[@id='orders']/div/div/div[2]/div/div[2]/div[2]/ul/li/div/div/div/div")
     private WebElement DeliveryCost;
+
+    @FindBy(xpath = "//div[@id='orders']/div/div/div[2]/div/div[2]/div/ul/li[2]/div/div/div/div")
+    private WebElement DeliveryCostToNovaPoshta;
 
     @FindBy(xpath = "//aside[@id='total_block']/div[5]/a")
     private WebElement ChangeOrder;
@@ -47,8 +53,8 @@ public class AssertTheDeliveryCost extends Page {
 
 
     public void enterPersonalData(String phone) {
-        EneterCity.click();
-        CityName.click();
+//        EneterCity.click();
+//        CityName.click();
         WaitForElementVisibility(EnterPhone);
         EnterPhone.click();
         EnterPhone.clear();
@@ -59,10 +65,11 @@ public class AssertTheDeliveryCost extends Page {
         WaitForElementVisibility(NextStep);
         NextStep.click();
         WaitForElementVisibility(Courier);
-        Courier.click();
+
     }
 
     public String assertDeliveryCost() {
+        Courier.click();
         WaitForElementVisibility(AssertDeliveryCostIsLoaded);
         return DeliveryCost.getText();
     }
@@ -70,6 +77,12 @@ public class AssertTheDeliveryCost extends Page {
     public String assertGiftIsGiven() {
         WaitForElementVisibility(GiftPresent);
         return GiftPresent.getText();
+    }
+
+    public String assertDeliveryCostToNovaPoshta() {
+        NovaPoshta.click();
+        WaitForElementVisibility(DeliveryCostToNovaPoshta);
+        return DeliveryCostToNovaPoshta.getText();
     }
 
     public void deleteFromBasket() {

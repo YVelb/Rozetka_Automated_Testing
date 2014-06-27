@@ -20,8 +20,11 @@ public class RozetkaDelivery_Steps extends BasicWebDriver {
     private AddToCart addToCart;
     private AssertTheDeliveryCost assertTheDeliveryCost;
 
+    private String assertOneThing = ".*1.*";
+    private String deliveryCostPresent = "35 грн.";
+    private String noDeliveryCost = "бесплатно";
     private String priceLessThen = "1500";
-    private String priceMoreThen = "1600";
+    private String priceMoreThen = "1700";
     private String priceMax = "20000";
     private String LoginName = "autobot13579@gmail.com";
     private String PasswordIs = "password";
@@ -96,23 +99,28 @@ public class RozetkaDelivery_Steps extends BasicWebDriver {
     @Then("verify delivery cost is 35 hryvnas")
     public void thenCheckDeliveryCostIs35() {
         assertTheDeliveryCost.waitForPageToLoad();
-        assertEquals("35 грн.", assertTheDeliveryCost.assertDeliveryCost());
+        assertEquals(deliveryCostPresent, assertTheDeliveryCost.assertDeliveryCost());
         assertTheDeliveryCost.deleteFromBasket();
     }
 
     @Then("verify delivery is free")
     public void thenCheckDeliveryCostIsFree() {
         assertTheDeliveryCost.waitForPageToLoad();
-        assertEquals("бесплатно", assertTheDeliveryCost.assertDeliveryCost());
+        assertEquals(noDeliveryCost, assertTheDeliveryCost.assertDeliveryCost());
         assertTheDeliveryCost.deleteFromBasket();
     }
 
     @Then("verify that free present is granted")
     public void thenCheckFreeGiftGrantSample() {
         assertTheDeliveryCost.waitForPageToLoad();
-        assertTrue(assertTheDeliveryCost.assertGiftIsGiven().matches(".*1.*"));
+        assertTrue(assertTheDeliveryCost.assertGiftIsGiven().matches(assertOneThing));
         assertTheDeliveryCost.deleteFromBasket();
     }
-
+    @Then("verify delivery cost to the nearest Nova Poshta filia is 35 hryvnas")
+    public void thenCheckDeliveryToNovaPoshtais35() {
+        assertTheDeliveryCost.waitForPageToLoad();
+        assertEquals(deliveryCostPresent, assertTheDeliveryCost.assertDeliveryCostToNovaPoshta());
+        assertTheDeliveryCost.deleteFromBasket();
+    }
 }
 

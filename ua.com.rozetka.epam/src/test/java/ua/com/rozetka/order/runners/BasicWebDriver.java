@@ -12,7 +12,7 @@ public class BasicWebDriver {
     @BeforeScenario
     public void setUp() {
         driver = new FirefoxDriver();
-        (driver).manage().window().maximize();
+        driver.manage().window().maximize();
     }
 
     public void get(String url) {

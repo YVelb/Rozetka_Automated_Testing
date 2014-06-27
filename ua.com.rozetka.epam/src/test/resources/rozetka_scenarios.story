@@ -26,3 +26,11 @@ When the user has found goods
 And added goods for more then 20000 hrn to his shopping cart
 And proceeded to checkout
 Then verify that free present is granted
+
+Scenario: Delivery to the nearest Nova Poshta filia is 35 hrn when you spend less then 1500 hrn.
+Given home page of http://rozetka.com.ua/
+And successful login
+When the user has found goods
+And added goods for less then 1500 hrn to his shopping cart
+And proceeded to checkout
+Then verify delivery cost to the nearest Nova Poshta filia is 35 hryvnas
